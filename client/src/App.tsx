@@ -1,3 +1,5 @@
+import React from "react"
+
 import { Refine, AuthProvider } from "@pankod/refine-core"
 import {
   notificationProvider,
@@ -7,7 +9,6 @@ import {
   ReadyPage,
   ErrorComponent
 } from "@pankod/refine-mui"
-
 import {
   AccountCircleOutlined,
   ChatBubbleOutline,
@@ -17,11 +18,10 @@ import {
 } from "@mui/icons-material"
 
 import dataProvider from "@pankod/refine-simple-rest"
-import { MuiInferencer } from "@pankod/refine-inferencer/mui"
 import routerProvider from "@pankod/refine-react-router-v6"
 import axios, { AxiosRequestConfig } from "axios"
-import { ColorModeContextProvider } from "contexts"
 import { Title, Sider, Layout, Header } from "components/layout"
+import { ColorModeContextProvider } from "contexts"
 import { CredentialResponse } from "interfaces/google"
 import { parseJwt } from "utils/parse-jwt"
 
@@ -59,9 +59,7 @@ function App() {
       if (profileObj) {
         const response = await fetch("http://localhost:8080/api/v1/users", {
           method: "POST",
-          headers: {
-            "Content-Type": "application/json"
-          },
+          headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
             name: profileObj.name,
             email: profileObj.email,
@@ -84,7 +82,6 @@ function App() {
           return Promise.reject()
         }
       }
-
       localStorage.setItem("token", `${credential}`)
 
       return Promise.resolve()
@@ -159,7 +156,7 @@ function App() {
             },
             {
               name: "my-profile",
-              options: { label: "My Profile" },
+              options: { label: "My Profile " },
               list: MyProfile,
               icon: <AccountCircleOutlined />
             }
