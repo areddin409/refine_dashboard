@@ -65,7 +65,6 @@ const getPropertyDetail = async (req, res) => {
 
 // Create a new property in the database
 const createProperty = async (req, res) => {
-  console.log("create")
   try {
     const { title, description, propertyType, location, price, photo, email } =
       req.body
